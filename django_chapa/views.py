@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.http.response import JsonResponse
+import json
 
-# Create your views here.
+
+def chapa_webhook(request):
+    data = json.loads(request.data)
+    return JsonResponse(data)

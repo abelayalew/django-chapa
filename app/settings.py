@@ -124,4 +124,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CHAPA_SECRET = "Secret"
 CHAPA_API_URL = ''
+CHAPA_WEBHOOK_URL = ''
 CHAPA_API_VERSION = 'v1'
