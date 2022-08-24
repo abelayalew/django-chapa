@@ -1,0 +1,20 @@
+[tool.poetry]
+name="django_chapa"
+version = "1.1"
+description = "Unofficial Django Implementation For Chapa Payment Gateway"
+authors = ["abelayalew <abelayalew81@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+packages = [
+    { include = "chapa" },
+]
