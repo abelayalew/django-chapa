@@ -18,6 +18,12 @@ pip install django-chapa
 set your config values in settings.py
 
 ```
+INSTALLED_APPS = [
+    ...
+    'django_chapa',
+    ...
+]
+
 CHAPA_SECRET = "Secret"
 
 CHAPA_API_URL = ''

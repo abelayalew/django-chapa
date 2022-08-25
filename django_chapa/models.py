@@ -14,3 +14,16 @@ class ChapaTransactionMixin(models.Model):
 
     class Meta:
         abstract = True
+
+    def __str__(self) -> str:
+        return f"{self.first_name} - {self.last_name} | {self.amount}"
+    
+    def serialize(self) -> dict:
+        return {
+            'amount': self.amount,
+            'currency': self.currency,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'description': self.description
+        }
