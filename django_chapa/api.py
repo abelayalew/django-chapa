@@ -15,17 +15,18 @@ except AttributeError:
 
 class ChapaAPI:
     @classmethod
-    def get_headers(cls):
+    def get_headers(cls) -> dict:
         return {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': f'Barrier {SECRET}'
         }
 
     @classmethod
-    def get_url(cls):
+    def get_url(cls) -> str:
         return API_URL + '/' + API_VERSION
 
     @classmethod
-    def send_request(cls, transaction: models.ChapaTransactionMixin):
+    def send_request(cls, transaction: models.ChapaTransactionMixin) -> dict:
         data = {
             'amount': transaction.amount,
             'currency': transaction.currency,
@@ -39,4 +40,12 @@ class ChapaAPI:
 
         response = requests.post(cls.get_url(), json=data, headers=cls.get_headers())
 
+        return response.json()
+    
+    @classmethod
+    def verify_payment(cls, transaction: models.ChapaTransactionMixin) -> dict:
+        response = requests.post(
+            f'{cls.get_url()}/transaction/verify/{transaction.id}',
+            headers=cls.get_headers(),
+        )
         return response.json()
