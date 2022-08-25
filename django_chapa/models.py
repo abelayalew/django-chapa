@@ -2,6 +2,13 @@ from django.db import models
 from uuid import uuid4
 
 
+class ChapaStatus(models.TextChoices):
+    PENDING = 'pending', 'PENDING'
+    SUCCESS = 'success', 'SUCCESS'
+    CREATED = 'created', 'CREATED'
+    FAILED = 'failed', 'FAILED'
+
+
 class ChapaTransactionMixin(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
 
@@ -11,6 +18,10 @@ class ChapaTransactionMixin(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     description = models.TextField()
+
+    event = models.CharField(max_length=255, null=True, blank=True)
+
+    status = models.CharField(max_length=50, choices=ChapaStatus.choices, default=ChapaStatus.CREATED)
 
     class Meta:
         abstract = True
