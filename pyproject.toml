@@ -4,7 +4,10 @@ version = "1.2.0"
 description = "Unofficial Django Implementation For Chapa Payment Gateway"
 authors = ["abelayalew <abelayalew81@gmail.com>"]
 license = "MIT"
+
 readme = "README.md"
+homepage = "https://github.com/abelayalew/django-chapa"
+repository = "https://github.com/abelayalew/django-chapa"
 
 [tool.poetry.dependencies]
 python = "^3.8"
