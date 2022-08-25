@@ -9,6 +9,7 @@ try:
     API_URL = settings.CHAPA_API_URL
     API_VERSION = settings.CHAPA_API_VERSION
     CALLBACK_URL = settings.CHAPA_WEBHOOK_URL
+    TRANSACTION_MODEL = settings.CHAPA_TRANSACTION_MODEL
 except AttributeError:
     raise ImproperlyConfigured("One or more chapa config missing, please check in your settings file")
 
@@ -23,7 +24,7 @@ class ChapaAPI:
 
     @classmethod
     def get_url(cls) -> str:
-        return API_URL + '/' + API_VERSION
+        return API_URL + '/' + API_VERSION.replace('/', '')
 
     @classmethod
     def send_request(cls, transaction: models.ChapaTransactionMixin) -> dict:
@@ -44,7 +45,7 @@ class ChapaAPI:
     
     @classmethod
     def verify_payment(cls, transaction: models.ChapaTransactionMixin) -> dict:
-        response = requests.post(
+        response = requests.get(
             f'{cls.get_url()}/transaction/verify/{transaction.id}',
             headers=cls.get_headers(),
         )

@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b8vgi&_leqc^*&a-+wja1=$w7y^2waw$fsa787^&hru3rnegd3'
+SECRET_KEY = 'django-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CHAPA_SECRET = "Secret"
-CHAPA_API_URL = ''
-CHAPA_WEBHOOK_URL = ''
+CHAPA_API_URL = 'https://api.chapa.dev'
+CHAPA_WEBHOOK_URL = 'webhook-url'
 CHAPA_API_VERSION = 'v1'
 CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransactionMixin'
