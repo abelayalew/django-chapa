@@ -33,3 +33,11 @@ urlpatterns = [
     path('chapa-webhook', include('django_chapa.urls'))
 ]
 ```
+
+register your chapa transaction model in    ``settings.py``
+
+```CHAPA_TRANSACTION_MODEL = 'yourapp.chapa_model```
+
+- Note: your chapa transaction model should implement ``django_chapa.models.ChapaTransactionMixin``
+    
+    - or must contain required fields for the webhook to work properly

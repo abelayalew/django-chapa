@@ -126,3 +126,4 @@ CHAPA_SECRET = "Secret"
 CHAPA_API_URL = ''
 CHAPA_WEBHOOK_URL = ''
 CHAPA_API_VERSION = 'v1'
+CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransactionMixin'
