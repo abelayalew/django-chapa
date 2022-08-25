@@ -23,6 +23,8 @@ class ChapaTransactionMixin(models.Model):
 
     status = models.CharField(max_length=50, choices=ChapaStatus.choices, default=ChapaStatus.CREATED)
 
+    response_dump = models.JSONField(default=dict)  # incase the response is valuable in the future
+
     class Meta:
         abstract = True
 
@@ -38,3 +40,5 @@ class ChapaTransactionMixin(models.Model):
             'last_name': self.last_name,
             'description': self.description
         }
+
+# TODO: add non abstract model
