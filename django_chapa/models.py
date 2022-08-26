@@ -42,3 +42,7 @@ class ChapaTransactionMixin(models.Model):
         }
 
 # TODO: add non abstract model
+
+
+class ChapaTransaction(ChapaTransactionMixin):
+    pass

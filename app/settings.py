@@ -124,8 +124,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CHAPA_SECRET = "Secret"
-CHAPA_API_URL = 'https://api.chapa.dev'
-CHAPA_WEBHOOK_URL = 'webhook-url'
-CHAPA_API_VERSION = 'v1'
-CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransactionMixin'
+

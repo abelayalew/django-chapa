@@ -19,7 +19,7 @@ class ChapaAPI:
     def get_headers(cls) -> dict:
         return {
             'Content-type': 'application/json',
-            'Authorization': f'Barrier {SECRET}'
+            'Authorization': f'Bearer {SECRET}'
         }
 
     @classmethod
@@ -34,12 +34,12 @@ class ChapaAPI:
             'email': transaction.email,
             'first_name': transaction.first_name,
             'last_name': transaction.last_name,
-            'tx_ref': transaction.id,
+            'tx_ref': transaction.id.__str__(),
             'callback_url': CALLBACK_URL,
             'description': transaction.description
         }
 
-        response = requests.post(cls.get_url(), json=data, headers=cls.get_headers())
+        response = requests.post(f'{cls.get_url()}/transaction/initialize', json=data, headers=cls.get_headers())
 
         return response.json()
     

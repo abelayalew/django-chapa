@@ -15,7 +15,7 @@ pip install django-chapa
 ```
 
 ## Django Config
-set your config values in settings.py
+set your config values in `settings.py`
 
 ```
 INSTALLED_APPS = [
@@ -32,7 +32,7 @@ CHAPA_API_VERSION = 'v1'
 
 ```
 
-add webhook url in urls.py 
+add webhook url in `urls.py` 
 
 ```
 urlpatterns = [
