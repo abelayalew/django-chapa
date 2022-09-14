@@ -125,3 +125,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
+CHAPA_SECRET = "CHAPUBK_TEST-cBKH4McoqRUuXGKQQHEFy4oZCKfzIcBK"
+CHAPA_API_URL = 'https://api.chapa.dev'
+CHAPA_WEBHOOK_URL = 'https://6ba4-196-188-115-244.eu.ngrok.io/chapa-hook'
+CHAPA_API_VERSION = 'v1'
+CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransaction'
