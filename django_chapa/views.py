@@ -26,7 +26,7 @@ def chapa_webhook(request):
         )
     
     model = settings.CHAPA_TRANSACTION_MODEL
-
+    # add your webhook events here and also you can override the model
     model.response_dump = data
     model.save()
     # TODO: this method should be class view for customization support

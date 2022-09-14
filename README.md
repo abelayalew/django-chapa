@@ -40,6 +40,9 @@ urlpatterns = [
 ]
 ```
 
+- if you are using default chapa transaction model run `./manage.py migrate`
+
+
 register your chapa transaction model in    ``settings.py``
 
 ```CHAPA_TRANSACTION_MODEL = 'yourapp.chapa_model```

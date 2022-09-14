@@ -18,7 +18,7 @@ class ChapaAPI:
     @classmethod
     def get_headers(cls) -> dict:
         return {
-            'Content-type': 'application/json',
+            # 'Content-type': 'application/json',
             'Authorization': f'Bearer {SECRET}'
         }
 
