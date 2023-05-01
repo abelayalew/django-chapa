@@ -10,15 +10,15 @@ try:
     API_VERSION = settings.CHAPA_API_VERSION
     CALLBACK_URL = settings.CHAPA_WEBHOOK_URL
     TRANSACTION_MODEL = settings.CHAPA_TRANSACTION_MODEL
-except AttributeError:
-    raise ImproperlyConfigured("One or more chapa config missing, please check in your settings file")
+except AttributeError as e:
+    raise ImproperlyConfigured(f"One or more chapa config missing {e}, please check in your settings file")
 
 
 class ChapaAPI:
     @classmethod
     def get_headers(cls) -> dict:
         return {
-            # 'Content-type': 'application/json',
+            'Content-type': 'application/json',
             'Authorization': f'Bearer {SECRET}'
         }
 

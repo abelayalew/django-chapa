@@ -10,6 +10,7 @@ class ChapaStatus(models.TextChoices):
 
 
 class ChapaTransactionMixin(models.Model):
+    "inherit this model and add your own extra fields"
     id = models.UUIDField(primary_key=True, default=uuid4)
 
     amount = models.FloatField()
@@ -40,9 +41,6 @@ class ChapaTransactionMixin(models.Model):
             'last_name': self.last_name,
             'description': self.description
         }
-
-# TODO: add non abstract model
-
 
 class ChapaTransaction(ChapaTransactionMixin):
     pass
