@@ -1,6 +1,6 @@
 [tool.poetry]
 name="django_chapa"
-version = "2.0.0"
+version = "1.3.0"
 description = "Django Implementation For Chapa Payment Gateway"
 authors = ["abelayalew <abelayalew81@gmail.com>"]
 license = "MIT"
