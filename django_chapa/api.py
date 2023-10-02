@@ -36,7 +36,8 @@ class ChapaAPI:
             'last_name': transaction.last_name,
             'tx_ref': transaction.id.__str__(),
             'callback_url': CALLBACK_URL,
-            'description': transaction.description,
+            'customization[title]': transaction.payment_title,
+            'customization[description]': transaction.description,
             'phone_number': transaction.phone_number
         }
 
@@ -54,7 +55,7 @@ class ChapaAPI:
     @classmethod
     def verify_payment(cls, transaction: models.ChapaTransactionMixin) -> dict:
         response = requests.get(
-            f'{cls.get_url()}/transaction/verify/{transaction.id}',
+            f'{cls.get_base_url()}/transaction/verify/{transaction.id}',
             headers=cls.get_headers(),
         )
         return response.json()

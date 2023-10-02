@@ -19,6 +19,8 @@ class ChapaTransactionMixin(models.Model):
     phone_number = models.CharField(max_length=25)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+
+    payment_title = models.CharField(max_length=255, default='Payment')
     description = models.TextField()
 
     status = models.CharField(max_length=50, choices=ChapaStatus.choices, default=ChapaStatus.CREATED)
