@@ -3,9 +3,9 @@ from uuid import uuid4
 
 
 class ChapaStatus(models.TextChoices):
+    CREATED = 'created', 'CREATED'
     PENDING = 'pending', 'PENDING'
     SUCCESS = 'success', 'SUCCESS'
-    CREATED = 'created', 'CREATED'
     FAILED = 'failed', 'FAILED'
 
 
@@ -16,15 +16,15 @@ class ChapaTransactionMixin(models.Model):
     amount = models.FloatField()
     currency = models.CharField(max_length=25, default='ETB')
     email = models.EmailField()
+    phone_number = models.CharField(max_length=25)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     description = models.TextField()
 
-    event = models.CharField(max_length=255, null=True, blank=True)
-
     status = models.CharField(max_length=50, choices=ChapaStatus.choices, default=ChapaStatus.CREATED)
 
-    response_dump = models.JSONField(default=dict)  # incase the response is valuable in the future
+    response_dump = models.JSONField(default=dict, blank=True)  # incase the response is valuable in the future
+    checkout_url = models.URLField(null=True, blank=True)
 
     class Meta:
         abstract = True

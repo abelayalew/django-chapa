@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-secret-key'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cc36-196-189-183-217.ngrok.io', '*']
 
 
 # Application definition
@@ -126,8 +127,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-CHAPA_SECRET = "CHAPUBK_TEST-cBKH4McoqRUuXGKQQHEFy4oZCKfzIcBK"
-CHAPA_API_URL = 'https://api.chapa.dev'
-CHAPA_WEBHOOK_URL = 'https://6ba4-196-188-115-244.eu.ngrok.io/chapa-hook'
-CHAPA_API_VERSION = 'v1'
+CHAPA_SECRET = os.environ.get('CHAPA_SECRET')
+CHAPA_API_URL = os.environ.get('CHAPA_API_URL', 'https://api.chapa.co')
+CHAPA_WEBHOOK_URL = os.environ.get('CHAPA_WEBHOOK_URL')
+CHAPA_API_VERSION = os.environ.get('CHAPA_API_VERSION', 'v1')
 CHAPA_TRANSACTION_MODEL = 'django_chapa.ChapaTransaction'

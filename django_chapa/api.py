@@ -23,11 +23,11 @@ class ChapaAPI:
         }
 
     @classmethod
-    def get_url(cls) -> str:
+    def get_base_url(cls) -> str:
         return API_URL + '/' + API_VERSION.replace('/', '')
 
     @classmethod
-    def send_request(cls, transaction: models.ChapaTransactionMixin) -> dict:
+    def send_request(cls, transaction: models.ChapaTransactionMixin, update_record=True) -> dict:
         data = {
             'amount': transaction.amount,
             'currency': transaction.currency,
@@ -36,12 +36,20 @@ class ChapaAPI:
             'last_name': transaction.last_name,
             'tx_ref': transaction.id.__str__(),
             'callback_url': CALLBACK_URL,
-            'description': transaction.description
+            'description': transaction.description,
+            'phone_number': transaction.phone_number
         }
 
-        response = requests.post(f'{cls.get_url()}/transaction/initialize', json=data, headers=cls.get_headers())
+        transaction_url = f'{cls.get_base_url()}/transaction/initialize'
+        response = requests.post(transaction_url, json=data, headers=cls.get_headers())
 
-        return response.json()
+        data = response.json()
+        if data and data.get('status') == 'success' and update_record:
+            transaction.status = models.ChapaStatus.PENDING
+            transaction.checkout_url = data.get('data').get('checkout_url')
+            transaction.save()
+
+        return data
     
     @classmethod
     def verify_payment(cls, transaction: models.ChapaTransactionMixin) -> dict:

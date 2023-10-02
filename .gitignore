@@ -5,3 +5,4 @@ __pycache__
 dist
 .idea
 *.sqlite3
+.env
